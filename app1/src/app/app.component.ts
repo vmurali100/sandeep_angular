@@ -10,14 +10,19 @@ export class AppComponent {
   person = { fname: "Murali", lname: "Krishna" };
   users = ["Ram", "Ravi", "Kiran", "RR"];
   isShow: boolean;
+
   constructor() {
     console.log("Contructor is called");
   }
 
   ngOnInit() {
-    this.isShow = true;
+    this.isShow = false;
   }
   convertObjArray() {
     return Object.values(this.person);
+  }
+
+  changeColor() {
+    this.isShow = true;
   }
 }
