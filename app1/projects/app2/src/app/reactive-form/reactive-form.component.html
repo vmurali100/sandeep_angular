@@ -2,11 +2,29 @@
   <form [formGroup]="userForm" (submit)="handleForm()">
     <div class="form-group">
       <label for="email">Email </label>
-      <input type="email" class="form-control" formControlName="email" />
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        (keyup)="validate()"
+        [class.is-invalid]="
+          userForm.controls.email.invalid && userForm.controls.email.dirty
+        "
+      />
+      <span
+        style="color: red;"
+        *ngIf="userForm.controls.email.invalid && userForm.controls.email.dirty"
+        >Please addd a valid Mail id</span
+      >
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" formControlName="password" />
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        [(ngModel)]="some"
+      />
     </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
@@ -14,22 +32,7 @@
     </button>
   </form>
   <hr />
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.email }}</td>
-        <td>{{ user.password }}</td>
-        <td><button class="btn btn-warning">Edit</button></td>
-        <td><button class="btn btn-danger">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
+  {{ some }}
+  <button (click)="sayHello()">CLick</button>
+  <app-user-list [users]="users" [somevalue]="some"></app-user-list>
 </div>
