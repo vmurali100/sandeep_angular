@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <form [formGroup]="userForm">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="fname"
+            [(ngModel)]="user.fname"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Last Name</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="lname"
+            [(ngModel)]="user.lname"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            [(ngModel)]="user.email"
+          />
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="addUser()">
+          Submit
+        </button>
+        <button (click)="updateUser()" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+
+    <div class="col-md-8">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.fname }}</td>
+            <td>{{ user.lname }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <button (click)="editUser(user)" class="btn btn-warning">
+                Edit
+              </button>
+            </td>
+            <td>
+              <button (click)="deleteUser(user)" class="btn btn-danger">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
