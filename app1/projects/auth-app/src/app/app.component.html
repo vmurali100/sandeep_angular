@@ -1,0 +1,10 @@
+<form #myForm="ngForm">
+  <label for="email">Email :</label>
+  <input type="text" ngModel name="email" /> <br />
+  <label for="password">Password :</label>
+  <input type="text" ngModel name="password" /> <br />
+  <button type="button" (click)="login(myForm)">Login</button>
+</form>
+
+<hr />
+<button (click)="getUsers()">Get Users</button>
