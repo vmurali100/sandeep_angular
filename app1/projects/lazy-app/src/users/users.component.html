@@ -1,0 +1,10 @@
+<div class="container">
+  <p>users works!</p>
+
+  <ul>
+    <li *ngFor="let user of users" [routerLink]="['users-details', user.id]">
+      {{ user.name }}
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>
