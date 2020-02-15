@@ -1,0 +1,118 @@
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control" formControlName="email" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="address"
+        placeholder="1234 Main St"
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Date</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="date"
+          placeholder="Date"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Gender </label>
+        <br />
+        <input
+          type="radio"
+          value="Male"
+          name="gender"
+          formControlName="gender"
+        />
+        Male
+        <input
+          type="radio"
+          value="Female"
+          name="gender"
+          formControlName="gender"
+        />
+        Female
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control" formControlName="city" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control" formControlName="state">
+          <option selected>Choose...</option>
+          <option>Andhra</option>
+          <option>Tamilnadu</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" formControlName="zip" />
+      </div>
+    </div>
+    <label for="">Subjects</label>
+
+    <div class="form-group">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value="HTML"
+        (change)="handleCheckbox($event)"
+      />
+      HTML
+      <br />
+
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value="CSS"
+        (change)="handleCheckbox($event)"
+      />
+      CSS <br />
+
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value="Javascript"
+        (change)="handleCheckbox($event)"
+      />
+      Javascript
+      <br />
+
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value="Angular 8"
+        (change)="handleCheckbox($event)"
+      />
+      Angular 8 <br />
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addUser()">
+      Sign in
+    </button>
+  </form>
+</div>
