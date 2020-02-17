@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "email": "vmurali102@gmail.com",
+      "password": "123",
+      "address": "Marathahalli",
+      "date": "2020-02-16",
+      "gender": "Male",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "zip": "560066",
+      "id": 1
+    }
+  ]
+}

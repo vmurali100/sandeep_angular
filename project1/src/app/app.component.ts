@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
+import { CommonService } from "./common.service";
 
 @Component({
   selector: "app-root",
@@ -7,10 +8,12 @@ import { FormGroup, FormControl } from "@angular/forms";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "project1";
+  constructor(private commonService: CommonService) {}
+  allUsers: any = [];
   userForm;
   user;
   subjects: any[];
+  isUpdate = false;
   ngOnInit() {
     this.userForm = new FormGroup({
       email: new FormControl(),
@@ -20,16 +23,21 @@ export class AppComponent {
       gender: new FormControl(),
       city: new FormControl(),
       state: new FormControl(),
-      zip: new FormControl()
+      zip: new FormControl(),
+      id: new FormControl()
     });
     // this.user = Object.assign({}, this.userForm.value);
-    this.subjects = [];
+
+    this.getAllusers();
   }
 
   addUser() {
     let user = this.userForm.value;
     user.subjects = this.subjects;
-    console.log(user);
+    this.commonService.addUser(user).subscribe(res => {
+      this.getAllusers();
+      this.userForm.reset();
+    });
   }
 
   handleCheckbox(event) {
@@ -42,8 +50,27 @@ export class AppComponent {
         }
       });
     }
-    // console.log(event.target.checked);
-    // console.log(event.target.value);
-    console.log(this.user);
+  }
+
+  getAllusers() {
+    this.commonService.getAllUsers().subscribe(res => {
+      this.allUsers = res;
+      this.userForm.reset();
+    });
+  }
+
+  editUserParent(user) {
+    console.log(user);
+    this.isUpdate = true;
+    this.userForm.setValue(user);
+    // this.userForm.controls.email.value = user.email;
+    // console.log(this.userForm.controls.email.value);
+  }
+
+  updateUser() {
+    this.commonService.updateUser(this.userForm.value).subscribe(res => {
+      this.isUpdate = false;
+      this.getAllusers();
+    });
   }
 }
