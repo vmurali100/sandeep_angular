@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="userForm">
+  <!-- <form [formGroup]="userForm">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Email</label>
@@ -95,12 +95,11 @@
     >
       Update
     </button>
-  </form>
+  </form> -->
 </div>
 
 <hr />
 <app-user-list
-  [users]="allUsers"
   (deletedInfo)="getAllusers()"
   (editObj)="editUserParent($event)"
 ></app-user-list>

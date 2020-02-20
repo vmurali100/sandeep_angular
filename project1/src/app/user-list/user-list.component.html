@@ -1,4 +1,5 @@
 <div class="container">
+  <input type="text" [(ngModel)]="searchText" (keyup)="searchUsers()" />
   <table class="table table-striped">
     <thead>
       <tr>
@@ -15,8 +16,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.email }}</td>
+      <tr *ngFor="let user of users | slice: start:end">
+        <td>{{ user.fname }}</td>
         <td>{{ user.password }}</td>
         <td>{{ user.address }}</td>
         <td>{{ user.date }}</td>
@@ -35,4 +36,44 @@
       </tr>
     </tbody>
   </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="#"
+          aria-label="Previous"
+          aria-disabled="true"
+        >
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let page of pageNumbers">
+        <a class="page-link" href="#" (click)="gotoPage(page - 1)">{{
+          page
+        }}</a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pageNumbers">
+        <a class="page-link" href="#" (click)="gotoPage(page - 1)">{{
+          page
+        }}</a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>

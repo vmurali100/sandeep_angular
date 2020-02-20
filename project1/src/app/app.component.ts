@@ -55,12 +55,12 @@ export class AppComponent {
   getAllusers() {
     this.commonService.getAllUsers().subscribe(res => {
       this.allUsers = res;
+      this.commonService.sendUserDetails(this.allUsers);
       this.userForm.reset();
     });
   }
 
   editUserParent(user) {
-    console.log(user);
     this.isUpdate = true;
     this.userForm.setValue(user);
     // this.userForm.controls.email.value = user.email;
